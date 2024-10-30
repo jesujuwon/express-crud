@@ -60,7 +60,7 @@ router.put('/api/users/:id', async(req, res) => {
 router.delete('/api/users/:id', async(req, res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);
-        if(!deletedUser) return res.status(404).json({message: 'User not found'});
+        if(!deletedUser) return res.status(404).json({message: 'User not found in the database'});
         res.status(204).json();
     } catch(error) {
         res.status(500).json({message: 'Error deleting user', error: error.message});
